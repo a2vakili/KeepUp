@@ -7,40 +7,72 @@
 //
 
 #import "GameScene.h"
+#import "GroundNode.h"
+#import "BallNode.h"
+
+@interface GameScene ()
+
+@property(nonatomic,strong) BallNode *ball;
+@end
 
 @implementation GameScene
 
--(void)didMoveToView:(SKView *)view {
-    /* Setup your scene here */
-    SKLabelNode *myLabel = [SKLabelNode labelNodeWithFontNamed:@"Chalkduster"];
+-(id)initWithSize:(CGSize)size{
+    self = [super initWithSize:size];
     
-    myLabel.text = @"Hello, World!";
-    myLabel.fontSize = 65;
-    myLabel.position = CGPointMake(CGRectGetMidX(self.frame),
-                                   CGRectGetMidY(self.frame));
+    SKSpriteNode *node = [SKSpriteNode spriteNodeWithColor:[UIColor blueColor] size:self.frame.size];
+    node.position = CGPointMake(CGRectGetMidX(self.frame), CGRectGetMidY(self.frame));
+    [self addChild:node];
     
-    [self addChild:myLabel];
+    
+    GroundNode *groundNode = [GroundNode groundWithSize:CGSizeMake(self.frame.size.width, 22)];
+    [self addChild:groundNode];
+    
+    //self.physicsWorld.gravity = CGVectorMake(0.0, -4.9);
+   // self.physicsWorld.contactDelegate = self;
+    
+    
+    return self;
+    
 }
 
--(void)touchesBegan:(NSSet *)touches withEvent:(UIEvent *)event {
-    /* Called when a touch begins */
+
+-(void)didMoveToView:(SKView *)view{
+   self.ball = [BallNode ballAtPosition:CGPointMake(40, 40)];
+    [self addChild:self.ball];
+    self.physicsWorld.gravity = CGVectorMake(0, -6);
     
-    for (UITouch *touch in touches) {
-        CGPoint location = [touch locationInNode:self];
-        
-        SKSpriteNode *sprite = [SKSpriteNode spriteNodeWithImageNamed:@"Spaceship"];
-        
-        sprite.xScale = 0.5;
-        sprite.yScale = 0.5;
-        sprite.position = location;
-        
-        SKAction *action = [SKAction rotateByAngle:M_PI duration:1];
-        
-        [sprite runAction:[SKAction repeatActionForever:action]];
-        
-        [self addChild:sprite];
-    }
 }
+
+-(void)touchesBegan:(NSSet *)touches withEvent:(UIEvent *)event{
+    
+    UITouch *touch = [touches anyObject];
+    
+        CGPoint position = [touch locationInNode:self];
+    
+    
+//    for (SKSpriteNode *node in self.children) {
+//        if ([node.name isEqualToString:@"ball"])
+//            [node.physicsBody applyImpulse:
+//             CGVectorMake(0, 100)];
+//        
+//        NSLog(@"tapped ball");
+//    }
+//    [self moveUpBallToPostion:position];
+    
+    [self.ball.physicsBody applyImpulse:CGVectorMake(0, 50)];
+}
+
+    
+
+
+
+-(void)moveUpBallToPostion:(CGPoint)position{
+   
+    [self.ball moveTowardPosition:position];
+    
+}
+
 
 -(void)update:(CFTimeInterval)currentTime {
     /* Called before each frame is rendered */

@@ -16,6 +16,9 @@
 		B678CFDF1B94FA9E001B9B56 /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = B678CFDE1B94FA9E001B9B56 /* Images.xcassets */; };
 		B678CFE21B94FA9E001B9B56 /* LaunchScreen.xib in Resources */ = {isa = PBXBuildFile; fileRef = B678CFE01B94FA9E001B9B56 /* LaunchScreen.xib */; };
 		B678CFEE1B94FA9E001B9B56 /* KeepUpTests.m in Sources */ = {isa = PBXBuildFile; fileRef = B678CFED1B94FA9E001B9B56 /* KeepUpTests.m */; };
+		B678CFF91B94FB2F001B9B56 /* HomePageScene.m in Sources */ = {isa = PBXBuildFile; fileRef = B678CFF81B94FB2F001B9B56 /* HomePageScene.m */; };
+		B678CFFC1B9507FE001B9B56 /* GroundNode.m in Sources */ = {isa = PBXBuildFile; fileRef = B678CFFB1B9507FE001B9B56 /* GroundNode.m */; };
+		B678CFFF1B950BFA001B9B56 /* BallNode.m in Sources */ = {isa = PBXBuildFile; fileRef = B678CFFE1B950BFA001B9B56 /* BallNode.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -45,6 +48,12 @@
 		B678CFE71B94FA9E001B9B56 /* KeepUpTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = KeepUpTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		B678CFEC1B94FA9E001B9B56 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		B678CFED1B94FA9E001B9B56 /* KeepUpTests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = KeepUpTests.m; sourceTree = "<group>"; };
+		B678CFF71B94FB2F001B9B56 /* HomePageScene.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HomePageScene.h; sourceTree = "<group>"; };
+		B678CFF81B94FB2F001B9B56 /* HomePageScene.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HomePageScene.m; sourceTree = "<group>"; };
+		B678CFFA1B9507FE001B9B56 /* GroundNode.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GroundNode.h; sourceTree = "<group>"; };
+		B678CFFB1B9507FE001B9B56 /* GroundNode.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GroundNode.m; sourceTree = "<group>"; };
+		B678CFFD1B950BFA001B9B56 /* BallNode.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BallNode.h; sourceTree = "<group>"; };
+		B678CFFE1B950BFA001B9B56 /* BallNode.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BallNode.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -88,6 +97,12 @@
 			children = (
 				B678CFD01B94FA9E001B9B56 /* AppDelegate.h */,
 				B678CFD11B94FA9E001B9B56 /* AppDelegate.m */,
+				B678CFFA1B9507FE001B9B56 /* GroundNode.h */,
+				B678CFFB1B9507FE001B9B56 /* GroundNode.m */,
+				B678CFFD1B950BFA001B9B56 /* BallNode.h */,
+				B678CFFE1B950BFA001B9B56 /* BallNode.m */,
+				B678CFF71B94FB2F001B9B56 /* HomePageScene.h */,
+				B678CFF81B94FB2F001B9B56 /* HomePageScene.m */,
 				B678CFD31B94FA9E001B9B56 /* GameScene.h */,
 				B678CFD41B94FA9E001B9B56 /* GameScene.m */,
 				B678CFD61B94FA9E001B9B56 /* GameScene.sks */,
@@ -230,7 +245,10 @@
 			files = (
 				B678CFDA1B94FA9E001B9B56 /* GameViewController.m in Sources */,
 				B678CFD21B94FA9E001B9B56 /* AppDelegate.m in Sources */,
+				B678CFFC1B9507FE001B9B56 /* GroundNode.m in Sources */,
+				B678CFF91B94FB2F001B9B56 /* HomePageScene.m in Sources */,
 				B678CFD51B94FA9E001B9B56 /* GameScene.m in Sources */,
+				B678CFFF1B950BFA001B9B56 /* BallNode.m in Sources */,
 				B678CFCF1B94FA9E001B9B56 /* main.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
