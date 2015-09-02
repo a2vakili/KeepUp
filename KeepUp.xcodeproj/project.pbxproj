@@ -19,6 +19,13 @@
 		B678CFF91B94FB2F001B9B56 /* HomePageScene.m in Sources */ = {isa = PBXBuildFile; fileRef = B678CFF81B94FB2F001B9B56 /* HomePageScene.m */; };
 		B678CFFC1B9507FE001B9B56 /* GroundNode.m in Sources */ = {isa = PBXBuildFile; fileRef = B678CFFB1B9507FE001B9B56 /* GroundNode.m */; };
 		B678CFFF1B950BFA001B9B56 /* BallNode.m in Sources */ = {isa = PBXBuildFile; fileRef = B678CFFE1B950BFA001B9B56 /* BallNode.m */; };
+		B678D0021B95F726001B9B56 /* HeadNode.m in Sources */ = {isa = PBXBuildFile; fileRef = B678D0011B95F726001B9B56 /* HeadNode.m */; };
+		B678D0081B95F8AF001B9B56 /* football.png in Resources */ = {isa = PBXBuildFile; fileRef = B678D0041B95F8AF001B9B56 /* football.png */; };
+		B678D0091B95F8AF001B9B56 /* goal.png in Resources */ = {isa = PBXBuildFile; fileRef = B678D0051B95F8AF001B9B56 /* goal.png */; };
+		B678D00A1B95F8AF001B9B56 /* zidane1.png in Resources */ = {isa = PBXBuildFile; fileRef = B678D0061B95F8AF001B9B56 /* zidane1.png */; };
+		B678D00B1B95F8AF001B9B56 /* zidane2.png in Resources */ = {isa = PBXBuildFile; fileRef = B678D0071B95F8AF001B9B56 /* zidane2.png */; };
+		B678D00D1B960B08001B9B56 /* ball.png in Resources */ = {isa = PBXBuildFile; fileRef = B678D00C1B960B07001B9B56 /* ball.png */; };
+		B678D0101B9655B0001B9B56 /* RestartLabelNode.m in Sources */ = {isa = PBXBuildFile; fileRef = B678D00F1B9655B0001B9B56 /* RestartLabelNode.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -54,6 +61,15 @@
 		B678CFFB1B9507FE001B9B56 /* GroundNode.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GroundNode.m; sourceTree = "<group>"; };
 		B678CFFD1B950BFA001B9B56 /* BallNode.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BallNode.h; sourceTree = "<group>"; };
 		B678CFFE1B950BFA001B9B56 /* BallNode.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BallNode.m; sourceTree = "<group>"; };
+		B678D0001B95F726001B9B56 /* HeadNode.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HeadNode.h; sourceTree = "<group>"; };
+		B678D0011B95F726001B9B56 /* HeadNode.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HeadNode.m; sourceTree = "<group>"; };
+		B678D0041B95F8AF001B9B56 /* football.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = football.png; sourceTree = "<group>"; };
+		B678D0051B95F8AF001B9B56 /* goal.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = goal.png; sourceTree = "<group>"; };
+		B678D0061B95F8AF001B9B56 /* zidane1.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = zidane1.png; sourceTree = "<group>"; };
+		B678D0071B95F8AF001B9B56 /* zidane2.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = zidane2.png; sourceTree = "<group>"; };
+		B678D00C1B960B07001B9B56 /* ball.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = ball.png; sourceTree = "<group>"; };
+		B678D00E1B9655B0001B9B56 /* RestartLabelNode.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RestartLabelNode.h; sourceTree = "<group>"; };
+		B678D00F1B9655B0001B9B56 /* RestartLabelNode.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RestartLabelNode.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -96,6 +112,10 @@
 			isa = PBXGroup;
 			children = (
 				B678CFD01B94FA9E001B9B56 /* AppDelegate.h */,
+				B678D00E1B9655B0001B9B56 /* RestartLabelNode.h */,
+				B678D00F1B9655B0001B9B56 /* RestartLabelNode.m */,
+				B678D0001B95F726001B9B56 /* HeadNode.h */,
+				B678D0011B95F726001B9B56 /* HeadNode.m */,
 				B678CFD11B94FA9E001B9B56 /* AppDelegate.m */,
 				B678CFFA1B9507FE001B9B56 /* GroundNode.h */,
 				B678CFFB1B9507FE001B9B56 /* GroundNode.m */,
@@ -110,6 +130,7 @@
 				B678CFD91B94FA9E001B9B56 /* GameViewController.m */,
 				B678CFDB1B94FA9E001B9B56 /* Main.storyboard */,
 				B678CFDE1B94FA9E001B9B56 /* Images.xcassets */,
+				B678D0031B95F8AF001B9B56 /* Photos */,
 				B678CFE01B94FA9E001B9B56 /* LaunchScreen.xib */,
 				B678CFCC1B94FA9E001B9B56 /* Supporting Files */,
 			);
@@ -140,6 +161,18 @@
 				B678CFEC1B94FA9E001B9B56 /* Info.plist */,
 			);
 			name = "Supporting Files";
+			sourceTree = "<group>";
+		};
+		B678D0031B95F8AF001B9B56 /* Photos */ = {
+			isa = PBXGroup;
+			children = (
+				B678D00C1B960B07001B9B56 /* ball.png */,
+				B678D0041B95F8AF001B9B56 /* football.png */,
+				B678D0051B95F8AF001B9B56 /* goal.png */,
+				B678D0061B95F8AF001B9B56 /* zidane1.png */,
+				B678D0071B95F8AF001B9B56 /* zidane2.png */,
+			);
+			path = Photos;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -222,9 +255,14 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				B678D0081B95F8AF001B9B56 /* football.png in Resources */,
 				B678CFE21B94FA9E001B9B56 /* LaunchScreen.xib in Resources */,
+				B678D00D1B960B08001B9B56 /* ball.png in Resources */,
+				B678D0091B95F8AF001B9B56 /* goal.png in Resources */,
+				B678D00B1B95F8AF001B9B56 /* zidane2.png in Resources */,
 				B678CFDF1B94FA9E001B9B56 /* Images.xcassets in Resources */,
 				B678CFD71B94FA9E001B9B56 /* GameScene.sks in Resources */,
+				B678D00A1B95F8AF001B9B56 /* zidane1.png in Resources */,
 				B678CFDD1B94FA9E001B9B56 /* Main.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -248,6 +286,8 @@
 				B678CFFC1B9507FE001B9B56 /* GroundNode.m in Sources */,
 				B678CFF91B94FB2F001B9B56 /* HomePageScene.m in Sources */,
 				B678CFD51B94FA9E001B9B56 /* GameScene.m in Sources */,
+				B678D0101B9655B0001B9B56 /* RestartLabelNode.m in Sources */,
+				B678D0021B95F726001B9B56 /* HeadNode.m in Sources */,
 				B678CFFF1B950BFA001B9B56 /* BallNode.m in Sources */,
 				B678CFCF1B94FA9E001B9B56 /* main.m in Sources */,
 			);
@@ -444,6 +484,7 @@
 				B678CFF31B94FA9E001B9B56 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 		B678CFF41B94FA9E001B9B56 /* Build configuration list for PBXNativeTarget "KeepUpTests" */ = {
 			isa = XCConfigurationList;
@@ -452,6 +493,7 @@
 				B678CFF61B94FA9E001B9B56 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 	};

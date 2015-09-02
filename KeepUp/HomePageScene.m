@@ -12,8 +12,18 @@
 @implementation HomePageScene
 
 -(void)didMoveToView:(SKView *)view{
-    SKLabelNode *welcomeLabel = [SKLabelNode labelNodeWithFontNamed:@"Chalkduster"];
     
+    
+    
+    
+    
+    SKSpriteNode *background = [SKSpriteNode spriteNodeWithImageNamed:@"football"];
+    background.position = CGPointMake(CGRectGetMidX(self.frame), CGRectGetMidY(self.frame));
+    [self addChild:background];
+    
+    
+    
+    SKLabelNode *welcomeLabel = [SKLabelNode labelNodeWithFontNamed:@"Chalkduster"];
     welcomeLabel.text = @"Welcome to keep Up Game";
     welcomeLabel.fontSize = 20;
     welcomeLabel.position = CGPointMake(CGRectGetMidX(self.frame),
@@ -36,6 +46,8 @@
     scoreLabel.position = CGPointMake(CGRectGetMidX(self.frame), CGRectGetMidY(self.frame) + 80);
     
     [self addChild:scoreLabel];
+    
+   
 }
 
 -(void)touchesBegan:(NSSet *)touches withEvent:(UIEvent *)event{

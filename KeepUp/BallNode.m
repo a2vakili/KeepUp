@@ -7,6 +7,7 @@
 //
 
 #import "BallNode.h"
+#import "HeadNode.h"
 
 @implementation BallNode
 
@@ -14,11 +15,12 @@
 +(instancetype)ballAtPosition:(CGPoint)position{
 
     
-    BallNode *ball = [BallNode spriteNodeWithColor:[UIColor yellowColor] size:CGSizeMake(40, 40)];
-   // node.physicsBody = [SKPhysicsBody bodyWithCircleOfRadius:30.0];
+    
+    BallNode *ball = [BallNode spriteNodeWithImageNamed:@"ball"];
+    ball.size = CGSizeMake(60, 60);
+   // ball.physicsBody = [SKPhysicsBody bodyWithCircleOfRadius:25];
     ball.position = position;
     ball.name = @"ball";
-    
     [ball setUpPhysicsBody];
     return ball;
 }
