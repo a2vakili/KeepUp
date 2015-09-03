@@ -70,6 +70,7 @@
 		B678D00C1B960B07001B9B56 /* ball.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = ball.png; sourceTree = "<group>"; };
 		B678D00E1B9655B0001B9B56 /* RestartLabelNode.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RestartLabelNode.h; sourceTree = "<group>"; };
 		B678D00F1B9655B0001B9B56 /* RestartLabelNode.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RestartLabelNode.m; sourceTree = "<group>"; };
+		B678D0111B976F8C001B9B56 /* PhysicsWorldConstants.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = PhysicsWorldConstants.h; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -112,11 +113,12 @@
 			isa = PBXGroup;
 			children = (
 				B678CFD01B94FA9E001B9B56 /* AppDelegate.h */,
+				B678CFD11B94FA9E001B9B56 /* AppDelegate.m */,
 				B678D00E1B9655B0001B9B56 /* RestartLabelNode.h */,
 				B678D00F1B9655B0001B9B56 /* RestartLabelNode.m */,
+				B678D0111B976F8C001B9B56 /* PhysicsWorldConstants.h */,
 				B678D0001B95F726001B9B56 /* HeadNode.h */,
 				B678D0011B95F726001B9B56 /* HeadNode.m */,
-				B678CFD11B94FA9E001B9B56 /* AppDelegate.m */,
 				B678CFFA1B9507FE001B9B56 /* GroundNode.h */,
 				B678CFFB1B9507FE001B9B56 /* GroundNode.m */,
 				B678CFFD1B950BFA001B9B56 /* BallNode.h */,
@@ -126,8 +128,6 @@
 				B678CFD31B94FA9E001B9B56 /* GameScene.h */,
 				B678CFD41B94FA9E001B9B56 /* GameScene.m */,
 				B678CFD61B94FA9E001B9B56 /* GameScene.sks */,
-				B678CFD81B94FA9E001B9B56 /* GameViewController.h */,
-				B678CFD91B94FA9E001B9B56 /* GameViewController.m */,
 				B678CFDB1B94FA9E001B9B56 /* Main.storyboard */,
 				B678CFDE1B94FA9E001B9B56 /* Images.xcassets */,
 				B678D0031B95F8AF001B9B56 /* Photos */,
@@ -140,6 +140,8 @@
 		B678CFCC1B94FA9E001B9B56 /* Supporting Files */ = {
 			isa = PBXGroup;
 			children = (
+				B678CFD81B94FA9E001B9B56 /* GameViewController.h */,
+				B678CFD91B94FA9E001B9B56 /* GameViewController.m */,
 				B678CFCD1B94FA9E001B9B56 /* Info.plist */,
 				B678CFCE1B94FA9E001B9B56 /* main.m */,
 			);

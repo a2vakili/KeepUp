@@ -35,9 +35,8 @@
     NSArray *textures = @[[SKTexture textureWithImageNamed:@"zidane2"],
                           [SKTexture textureWithImageNamed:@"zidane1"]];
     
-    SKAction *faceAction = [SKAction animateWithTextures:textures timePerFrame:0.35];
+    SKAction *faceAction = [SKAction animateWithTextures:textures timePerFrame:0.5];
     SKAction *animateFace =  [SKAction repeatAction:faceAction count:1];
-//    [SKAction repeatActionForever:faceAction];
     [self runAction:animateFace];
 }
 

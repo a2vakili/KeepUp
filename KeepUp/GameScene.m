@@ -11,13 +11,13 @@
 #import "BallNode.h"
 #import "HeadNode.h"
 #import "HomePageScene.h"
+#import "PhysicsWorldConstants.h"
 
 @interface GameScene ()
 
 @property(nonatomic, strong)HeadNode *head;
 @property(nonatomic,strong) BallNode *ball;
 @property(nonatomic, strong)GroundNode *ground;
-//@property(nonatomic, strong)HeadNode *head2;
 @property(nonatomic, strong) SKLabelNode *restartLabel;
 @property(nonatomic,assign) int score;
 @property(nonatomic,strong) SKLabelNode *scoreLabel;
@@ -37,10 +37,10 @@
     gameBackGroundImage.size = CGSizeMake(self.frame.size.width, self.frame.size.height);
     gameBackGroundImage.zPosition = 0.0;
     [self addChild:gameBackGroundImage];
-
+    
     self.ground = [GroundNode groundWithSize:CGSizeMake(self.frame.size.width, 5)];
     [self addChild:self.ground];
-  
+    
     
     SKLabelNode *restartLabel = [SKLabelNode labelNodeWithFontNamed:@"Chalkduster"];
     restartLabel.text = @"Restart";
@@ -69,12 +69,6 @@
     [self addChild:pageLabel];
     
     
-    
-
-    //self.physicsWorld.gravity = CGVectorMake(0.0, -4.9);
-   // self.physicsWorld.contactDelegate = self;
-    
-    
     return self;
     
 }
@@ -84,11 +78,11 @@
     
     
     self.ball = [BallNode ballAtPosition:CGPointMake(self.frame.size.width/2 ,self.frame.size.height)];
-
+    
     self.ball.zPosition = 1.0;
     [self addChild:self.ball];
     [self didMakeHead];
-   self.physicsWorld.gravity = CGVectorMake(0, -0.8);
+    self.physicsWorld.gravity = CGVectorMake(0, -1.8);
     
 }
 
@@ -96,7 +90,7 @@
     
     UITouch *touch = [touches anyObject];
     
-        CGPoint position = [touch locationInNode:self];
+    CGPoint position = [touch locationInNode:self];
     
     
     if ([self.restartLabel containsPoint:position]) {
@@ -111,41 +105,85 @@
     
     NSLog(@"x: %f y: %f",position.x,position.y);
     [self setUpImpusle];
-
+    
 }
 
 
 
-//-(void)didMakeHead2 {
-//    self.head2 = [HeadNode head2AtPosition:CGPointMake(self.frame.size.width/2, 50)];
-//    self.head2.size = CGSizeMake(90 , 90);
-//    [self addChild:self.head2];
-//    self.head2.zPosition = 1.0;
-//}
+// setting up the range and impulses and gravity due to different position there are different impulses
+// but the gravity increases as the ball goes higher to accelerate at first pace.
 
 -(void)setUpImpusle {
-    if (self.ball.position.y >= 75 && self.ball.position.y < 90 ) {
+    
+    
+    
+    if (self.ball.position.y >= minPosition1 && self.ball.position.y < maxPosition1 ) {
         
-        [self.ball.physicsBody applyImpulse:CGVectorMake(0, 80)];
+        [self.ball.physicsBody applyImpulse:CGVectorMake(0, yDirectionImpulse1)];
         
+        if (self.ball.position.y > self.frame.size.height/2 && self.ball.position.y <= self.frame.size.height * 0.60) {
+            self.physicsWorld.gravity = CGVectorMake(0.0, gravity1);
+        }
         self.score+= 1;
-        
         [self.head setUpAnimations];
     }
     
-    else if (self.ball.position.y >= 90 && self.ball.position.y < 100 ) {
-        [self.ball.physicsBody applyImpulse:CGVectorMake(0, 100)];
+    
+    else if (self.ball.position.y > maxPosition1 && self.ball.position.y < maxPosition2){
+        [self.ball.physicsBody applyImpulse:CGVectorMake(0, yDirectionImpulse2)];
+        
+            
+            if (self.ball.position.y > self.frame.size.height) {
+                self.physicsWorld.gravity = CGVectorMake(0, gravity2);
+        }
+        self.score+= 3;
+        [self.head setUpAnimations];
+        
+    }
+    
+    
+    else if (self.ball.position.y >= maxPosition2 && self.ball.position.y < maxPosition3 ) {
+        [self.ball.physicsBody applyImpulse:CGVectorMake(0, yDirectionImpulse3)];
+        
+        if (self.ball.position.y > self.frame.size.height * 0.90 && self.ball.position.y <= self.frame.size.height) {
+            self.physicsWorld.gravity = CGVectorMake(0, gravity3);
+        }
+        
         [self.head setUpAnimations];
         self.score+= 2;
     }
     
+  
     
-    else if (self.ball.position.y >= 100 && self.ball.position.y < 140 ) {
-        [self.ball.physicsBody applyImpulse:CGVectorMake(0, 80)];
+    else if (self.ball.position.y >= maxPosition3 && self.ball.position.y < maxPosition4 ) {
+        [self.ball.physicsBody applyImpulse:CGVectorMake(0, yDirectionImpulse3)];
+        if (self.ball.position.y > self.frame.size.height * 0.80 && self.ball.position.y <= self.frame.size.height * 0.90) {
+            self.physicsWorld.gravity = CGVectorMake(0, gravity4);
+        }
         self.score++;
         [self.head setUpAnimations];
-        
     }
+    else if (self.ball.position.y >= maxPosition4 && self.ball.position.y < maxPosition5){
+        [self.ball.physicsBody applyImpulse:CGVectorMake(0, yDirectionImpulse2)];
+        
+      
+        if (self.ball.position.y > self.frame.size.height * 0.70 && self.ball.position.y <= self.frame.size.height * 0.80) {
+            self.physicsWorld.gravity = CGVectorMake(0, gravity5);}
+        self.score++;
+        [self.head setUpAnimations];
+    }
+    
+    else if (self.ball.position.y >= maxPosition5 && self.ball.position.y <= maxPosition6){
+        [self.ball.physicsBody applyImpulse:CGVectorMake(0, yDirectionImpulse6)];
+        
+        if (self.ball.position.y > self.frame.size.height *0.60 && self.ball.position.y <= self.frame.size.height* 0.70 ) {
+            self.physicsWorld.gravity = CGVectorMake(0, gravity6);
+      
+        }
+        self.score++;
+        [self.head setUpAnimations];
+    }
+    
 }
 
 -(void)didMakeHead{
@@ -154,6 +192,9 @@
     [self addChild:self.head];
     self.head.zPosition = 1.0;
 }
+
+
+
 
 
 -(void)update:(CFTimeInterval)currentTime {
@@ -169,7 +210,7 @@
 {
     self.restartLabel.alpha = 1.0;
     self.homePageLabel.hidden = NO;
-
+    
 }
 
 // ???: how does this get called?
