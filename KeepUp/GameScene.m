@@ -21,7 +21,9 @@
 @property(nonatomic, strong) SKLabelNode *restartLabel;
 @property(nonatomic,assign) int score;
 @property(nonatomic,strong) SKLabelNode *scoreLabel;
+@property(nonatomic,strong) SKLabelNode *highScoreLabel;
 @property(nonatomic,strong) SKLabelNode *homePageLabel;
+
 
 @end
 
@@ -52,7 +54,6 @@
     [self addChild:restartLabel];
     
     SKLabelNode *scoreLabel = [SKLabelNode labelNodeWithFontNamed:@"Chalkduster"];
-    scoreLabel.text = @"Score: ";
     scoreLabel.fontSize = 15;
     scoreLabel.position = CGPointMake(self.frame.size.width/10, self.frame.size.height* 0.9);
     scoreLabel.zPosition = 2.0;
@@ -67,6 +68,16 @@
     pageLabel.hidden = YES;
     self.homePageLabel = pageLabel;
     [self addChild:pageLabel];
+    
+    SKLabelNode *highScoreLabel = [SKLabelNode labelNodeWithFontNamed:@"Chalkduster"];
+    highScoreLabel.fontSize = 15;
+    highScoreLabel.position = CGPointMake(self.frame.size.width/2, self.frame.size.height/2);
+    highScoreLabel.zPosition = 1.0;
+    highScoreLabel.hidden = NO;
+    self.highScoreLabel = highScoreLabel;
+    [self addChild:highScoreLabel];
+    
+
     
     
     return self;
@@ -83,6 +94,7 @@
     [self addChild:self.ball];
     [self didMakeHead];
     self.physicsWorld.gravity = CGVectorMake(0, -1.8);
+    [self endGame];
     
 }
 
@@ -119,10 +131,10 @@
     
     if (self.ball.position.y >= minPosition1 && self.ball.position.y < maxPosition1 ) {
         
-        [self.ball.physicsBody applyImpulse:CGVectorMake(0, yDirectionImpulse1)];
+        [self.ball.physicsBody applyImpulse:CGVectorMake(0, 40)];
         
         if (self.ball.position.y > self.frame.size.height/2 && self.ball.position.y <= self.frame.size.height * 0.60) {
-            self.physicsWorld.gravity = CGVectorMake(0.0, gravity1);
+            self.physicsWorld.gravity = CGVectorMake(0.0, -3.5);
         }
         self.score+= 1;
         [self.head setUpAnimations];
@@ -130,11 +142,11 @@
     
     
     else if (self.ball.position.y > maxPosition1 && self.ball.position.y < maxPosition2){
-        [self.ball.physicsBody applyImpulse:CGVectorMake(0, yDirectionImpulse2)];
+        [self.ball.physicsBody applyImpulse:CGVectorMake(0, 100)];
         
             
             if (self.ball.position.y > self.frame.size.height) {
-                self.physicsWorld.gravity = CGVectorMake(0, gravity2);
+                self.physicsWorld.gravity = CGVectorMake(0, -9.8);
         }
         self.score+= 3;
         [self.head setUpAnimations];
@@ -143,46 +155,37 @@
     
     
     else if (self.ball.position.y >= maxPosition2 && self.ball.position.y < maxPosition3 ) {
-        [self.ball.physicsBody applyImpulse:CGVectorMake(0, yDirectionImpulse3)];
+        [self.ball.physicsBody applyImpulse:CGVectorMake(0, 80)];
         
         if (self.ball.position.y > self.frame.size.height * 0.90 && self.ball.position.y <= self.frame.size.height) {
-            self.physicsWorld.gravity = CGVectorMake(0, gravity3);
+            self.physicsWorld.gravity = CGVectorMake(0, -8.8);
+            self.score+= 2;
         }
         
         [self.head setUpAnimations];
-        self.score+= 2;
+       
     }
     
   
     
     else if (self.ball.position.y >= maxPosition3 && self.ball.position.y < maxPosition4 ) {
-        [self.ball.physicsBody applyImpulse:CGVectorMake(0, yDirectionImpulse3)];
+        [self.ball.physicsBody applyImpulse:CGVectorMake(0, 60)];
         if (self.ball.position.y > self.frame.size.height * 0.80 && self.ball.position.y <= self.frame.size.height * 0.90) {
-            self.physicsWorld.gravity = CGVectorMake(0, gravity4);
+            self.physicsWorld.gravity = CGVectorMake(0, -6);
         }
         self.score++;
         [self.head setUpAnimations];
     }
     else if (self.ball.position.y >= maxPosition4 && self.ball.position.y < maxPosition5){
-        [self.ball.physicsBody applyImpulse:CGVectorMake(0, yDirectionImpulse2)];
+        [self.ball.physicsBody applyImpulse:CGVectorMake(0, 55)];
         
       
         if (self.ball.position.y > self.frame.size.height * 0.70 && self.ball.position.y <= self.frame.size.height * 0.80) {
-            self.physicsWorld.gravity = CGVectorMake(0, gravity5);}
+            self.physicsWorld.gravity = CGVectorMake(0, -5);}
         self.score++;
         [self.head setUpAnimations];
     }
     
-    else if (self.ball.position.y >= maxPosition5 && self.ball.position.y <= maxPosition6){
-        [self.ball.physicsBody applyImpulse:CGVectorMake(0, yDirectionImpulse6)];
-        
-        if (self.ball.position.y > self.frame.size.height *0.60 && self.ball.position.y <= self.frame.size.height* 0.70 ) {
-            self.physicsWorld.gravity = CGVectorMake(0, gravity6);
-      
-        }
-        self.score++;
-        [self.head setUpAnimations];
-    }
     
 }
 
@@ -195,12 +198,11 @@
 
 
 
-
-
 -(void)update:(CFTimeInterval)currentTime {
     /* Called before each frame is rendered */
     if (self.ball.position.y < 36.0) {
         [self endGame];
+      
     }
     
     self.scoreLabel.text = [NSString stringWithFormat:@"Score:%d",self.score];
@@ -210,13 +212,30 @@
 {
     self.restartLabel.alpha = 1.0;
     self.homePageLabel.hidden = NO;
+    self.highScoreLabel.hidden = NO;
+    // Get the score
     
+    
+      NSUserDefaults *defaults = [NSUserDefaults standardUserDefaults];
+    NSInteger retrievedScore  = [defaults integerForKey:@"highScore"];
+    self.retrieveScore = retrievedScore;
+    
+    if (self.score < retrievedScore) {
+        self.highScoreLabel.text = [NSString stringWithFormat:@"highScore:%ld",(long)retrievedScore];
+    }
+    else if (self.score > retrievedScore){
+       
+        [defaults setInteger:self.score forKey:@"highScore"];
+        self.highScoreLabel.text = [NSString stringWithFormat:@"highScore:%d",self.score];
+    }
 }
 
 // ???: how does this get called?
 - (void) restartGame;
 {
     self.restartLabel.alpha = 0.0;
+    self.homePageLabel.hidden = YES;
+    self.highScoreLabel.hidden = YES;
     self.ball.position = CGPointMake(self.frame.size.width/2, self.frame.size.height);
     self.score = 0;
     

@@ -18,7 +18,7 @@ static const int maxPosition2 = 88;    // difference of 7
 static const int maxPosition3 = 95;    // difference of 10
 static const int maxPosition4 = 105;
 static const int maxPosition5 = 120;   // difference of 15
-static const int maxPosition6 = 140;   // difference of 20
+                                        // difference of 20
 
 
 // ballImpulses
